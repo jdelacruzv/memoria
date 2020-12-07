@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+button {
+    background-color: #47a386;
+    border: 1px solid #47a386;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 10px 25px;
+    cursor: pointer;
+    /* Elimina resplandor cuando recibe el focus */
+    outline: none;
+}
+
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* permite controlar si un elemento puede o no recibir los eventos del cursor */
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+}
+
+.show {
+    pointer-events: auto;
+    /* permite que se muestre la ventana */
+    opacity: 1;
+}
+
+.modal {
+    background-color: #ffffff;
+    width: 500px;
+    max-width: 100%;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+header {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: indigo;
+    color: #ffffff;
+}
+
+header h1 {
+    margin-left: 10px;
+}
+
+.time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    font-size: 20px;
+    height: 30px;
+}
+
+.time p {
+    margin-right: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.time input {
+    outline: none;
+    text-align: left;
+    width: 100px;
+    height: inherit;
+    padding-top: 5px;
+    background-color: indigo;
+    color: #ffffff;
+    font-size: 20px;
+    border: 0;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+main {
+    margin-top: 25px;
+    height: 100%;
+}
+
+.row {
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.row div {
+    width: 140px;
+    height: 140px;
+    text-align: center;
+    margin: 2px 10px;
+    background-color: indigo;
+    color: #ffffff;
+}

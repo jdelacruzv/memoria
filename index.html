@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="modal-container" id="modal-container">
+        <div class="modal">
+            <figure>
+                <img src="/img/sysdelsan.png" alt="Tierra azul y un cursor">
+            </figure>
+            <p>@ Desarrollado por Jose De La Cruz</p>
+            <button id="close">Cerrar</button>
+        </div>
+    </div>
+
+    <header>
+        <h1>Juego de Memoria</h1>
+        <div class="time">
+            <p>Tiempo restante:</p><input id="timeleft"><input id="clock">
+        </div>
+        <nav>
+            <ul>
+                <li><button onclick="loadPage()">Reiniciar</button>
+                <li><button id="about">Acerca de</button>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="row">
+            <div></div>
+            <div>02</div>
+            <div>03</div>
+            <div>04</div>
+            <div>05</div>
+        </div>
+        <div class="row">
+            <div>06</div>
+            <div>07</div>
+            <div>08</div>
+            <div>09</div>
+            <div>10</div>
+        </div>
+        <div class="row">
+            <div>11</div>
+            <div>12</div>
+            <div>13</div>
+            <div>14</div>
+            <div>15</div>
+        </div>
+        <div class="row">
+            <div>16</div>
+            <div>17</div>
+            <div>18</div>
+            <div>19</div>
+            <div>20</div>
+        </div>
+    </main>
+
+    <script src="memory.js"></script>
+
+</body> 
+</html>
