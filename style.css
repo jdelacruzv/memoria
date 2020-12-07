@@ -92,18 +92,6 @@ header h1 {
     color: #ffffff;
 }
 
-.time input {
-    outline: none;
-    text-align: left;
-    width: 100px;
-    height: inherit;
-    padding-top: 5px;
-    background-color: indigo;
-    color: #ffffff;
-    font-size: 20px;
-    border: 0;
-}
-
 ul {
     list-style: none;
     display: flex;
