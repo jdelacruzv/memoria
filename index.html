@@ -3,17 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jose Luis De La Cruz">
     <title>Juego de Memoria</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div class="container-modal" id="modal">
-        <div class="window-modal">
-            <figure><img src="/img/sysdelsan.png" alt="Logo de sysdelsan"></figure>
-            <p>Desarrollado por Jose De La Cruz</p>
-            <button id="close">Cerrar</button>
-        </div>
-    </div>
     <header>
         <h1>Juego de Memoria</h1>
         <div class="time">
@@ -21,12 +15,30 @@
         </div>
         <nav>
             <ul>
-                <li><button onclick="loadPage()">Reiniciar</button>
+                <li><button id="reset">Reiniciar</button>
                 <li><button id="about">Acerca de</button>
             </ul>
         </nav>
     </header>
-    <main id="board"></main>
+    <figure id="board"></figure>
+    <div id="modal-about" class="container-modal">
+        <div class="window-modal">
+            <figure>
+                <img src="/img/jl.jpg" alt="Logo verde Jose Luis">
+            </figure>
+            <p>Desarrollado por Jose De La Cruz</p>
+            <button id="close-about">Cerrar</button>
+        </div>
+    </div>
+    <div id="modal-winner" class="container-modal">
+        <div class="window-modal">
+            <figure>
+                <img src="/img/win.svg" alt="Logo naranja ganador">
+            </figure>
+            <p>GANASTE...!!!</p>
+            <button id="close-winner">Cerrar</button>
+        </div>
+    </div>
     <script src="/js/memory.js"></script>
 </body> 
 </html>

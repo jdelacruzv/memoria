@@ -16,55 +16,15 @@ button {
     background-color: #47a386;
     border: 1px solid #47a386;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     color: #ffffff;
     font-size: 0.8rem;
     width: 6.8rem;
     text-transform: uppercase;
     padding: 0.5rem 0.8rem;
     cursor: pointer;
-    /* Elimina resplandor cuando recibe el focus */
+    /* Elimina resplandor cuando 
+       recibe el focus */
     outline: none;
-}
-
-.container-modal {
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* permite controlar si un elemento puede o no recibir los eventos del cursor */
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    opacity: 0;
-}
-
-.show {
-    pointer-events: auto;
-    /* permite que se muestre la ventana */
-    opacity: 1;
-}
-
-.window-modal {
-    /* background-color: #222831; */
-    background-color: #ffffff;
-    width: 400px;
-    max-width: 100%;
-    padding: 20px 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-.window-modal p {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 30px 0;
-    /* color: #ffffff; */
-    color:  #000000;
 }
 
 header {
@@ -88,7 +48,6 @@ header h1 {
     margin: 0;
     padding: 10px;
     font-size: 1rem;
-    /* height: 30px; */
 }
 
 .time span {
@@ -111,11 +70,11 @@ li {
     border-radius: 5px;
 }
 
-main {
+figure {
     margin: 3% 25%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .figure-img {
@@ -123,4 +82,54 @@ main {
     height: 120px;
     margin: 5px;
     border-radius: 5px;
+}
+
+.container-modal {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Controla si el elemento puede o 
+       no recibir eventos del cursor */
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+}
+
+.show {
+    pointer-events: auto;
+    /* Muestra la ventana */
+    opacity: 1;
+}
+
+.window-modal {
+    /* background-color: #222831; */
+    background-color: #ffffff;
+    width: 480px;
+    max-width: 100%;
+    padding: 20px 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.window-modal figure {
+    margin: 0;
+}
+
+.window-modal figure img {
+    width: 100px;
+    height: 100px;
+    border-radius: 3.2rem;
+    box-shadow: 2px 2px 5px #999999;
+}
+
+.window-modal p {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 30px 0;
+    color:  #000000;
 }

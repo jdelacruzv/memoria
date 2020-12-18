@@ -1,139 +1,137 @@
-// Ventana modal ---------------------------------------------------------->
-var about = document.getElementById("about");
-var modal = document.getElementById("modal");
-var closewindow = document.getElementById("close");
+// Load the timer and board images
+window.onload = () => {
+    document.getElementById('timer').innerHTML = '00:00:00';
+    calculateTimer();
+    createBoard();
+}
 
-about.addEventListener("click", () => modal.classList.add("show"))
-closewindow.addEventListener("click", () => modal.classList.remove("show"))
-
-
-// Recargar pagina -------------------------------------------------------->
-loadPage = () => location.reload();
-
-
-// Tiempo acumulado (temporizador) ---------------------------------------->
+// Accumulated time (timer) ---------------------------------------------->
 // setInterval(): ejecuta una función infinitamente cada x milisegundos.
 // setTimeout(): ejecuta una función una sola vez después de x milisegundos. 
 
 var second = 1, minute = 0, hour = 0;
-var capture = document.getElementById("timer");
 
 printTimer = () => {
-    var hou = `${hour < 10 ? '0' + hour : hour}`;
-    var min = `${minute < 10 ? '0' + minute : minute}`;
-    var seg = `${second < 10 ? '0' + second : second}`;
-    return `${hou}:${min}:${seg}`;
+    var h = `${hour < 10 ? "0" + hour : hour}`;
+    var m = `${minute < 10 ? "0" + minute : minute}`;
+    var s = `${second < 10 ? "0" + second : second}`;
+    return `${h}:${m}:${s}`;
 }
 
 calculateTimer = () => {
-    setInterval(() => { 
-            capture.innerHTML = printTimer();
-            second++;
-            if(second === 59) {
-                second = 0;
-                minute++;
-                if(minute === 59) {
-                    minute = 0;
-                    hour++;
-                }
+    timer = setInterval(() => { 
+        document.getElementById("timer").innerHTML = printTimer();
+        second++;
+        if(second === 59) {
+            second = 0;
+            minute++;
+            if(minute === 59) {
+                minute = 0;
+                hour++;
             }
+        }
     }, 1000);
 }
 
-// Carga el contador a la pagina y espera cero para arrancar
-window.onload = () => {
-    document.getElementById('timer').innerHTML = '00:00:00';
-    window.setTimeout('calculateTimer()', 0);
-    createBoard();
-}
 
+var container = document.getElementById("board");
+var images = [1,2,3,4,5,6,7,8,9,10];
+var temporary = [], winner = [];
+const count = 10;
 
-// Logica del juego -------------------------------------------------------->
-var container = document.getElementById('board');
-var arrayCards = [1,2,3,4,5,6,7,8,9,10];
-const COUNT = 10;
-
-// Duplicar array de tarjetas
-duplicateArrayCards = () => { 
-    for(var i=1; i<=COUNT; i++) {
-        arrayCards.push(i);
+// Duplicate array of images
+duplicateArrayImages = () => { 
+    for(var i=1; i<=count; i++) {
+        images.push(i);
     }
 }
 
-// Barajar tarjetas
-shufflingCards = array => array.sort(() => Math.random() - 0.5);
+// Disorder the positions of the images
+messArrayImages = array => array.sort(() => Math.random() - 0.5);
 
-// Crea el tablero del juego
+// Create the game board
 createBoard = () => {
-    duplicateArrayCards();
-    shufflingCards(arrayCards);
-    for(var i=0; i<arrayCards.length; i++) {
-        var card = document.createElement('img');
-        card.classList.add('figure-img');
-        card.setAttribute('name', arrayCards[i]);
-        card.setAttribute('src', 'img/fondo-card.png');
-        card.setAttribute('onClick', 'flipCard(this)');
-        container.appendChild(card);
+    duplicateArrayImages();
+    messArrayImages(images);
+    for(var i=0; i<images.length; i++) {
+        var image = document.createElement("img");
+        image.classList.add("figure-img");
+        image.setAttribute("name", images[i]);
+        image.setAttribute("src", "img/fondo.png");
+        image.setAttribute("onclick", "flipImages(this)");
+        container.appendChild(image);
     }
 }
 
-// Voltear tarjeta
-flipCard = (e) => {
-    cardId = e.getAttribute('name');
-    console.log(cardId);
-    e.setAttribute('style', 'background-color: #999b84');
-    e.setAttribute('src', `img/animals/${cardId}.svg`);
-    e.removeAttribute('onClick', 'flipCard(this)');
+// Flip the images
+flipImages = (e) => {
+    var imageId = e.getAttribute("name");
+    console.log(imageId);
+    e.setAttribute("src", `img/animals/${imageId}.svg`);
+    e.setAttribute("style", "background-color: #999b84");
+    e.removeAttribute("onClick", "flipImages(this)");
+    temporary.push(imageId);
+    if (temporary.length === 2) {
+        verifySameImages();
+    }
 }
 
-// Coincidir tarjeta
-matchCard = cardTemporal => {
-    for(var i=0; i<=cardTemporal; i++) {
-        if(i === i + 1) {
-            return console.log('son iguales, no se revierte');
-        } else {
-            return console.log('no son iguales, se revierte');
+// Check if the images are the same
+verifySameImages = () => {
+    var index = document.querySelectorAll("img[name]");
+    if(temporary[0] === temporary[1]) {
+        for(var i=0; i<index.length; i++) {
+            if(index[i].name === temporary[0]) {
+                index[i].setAttribute("style", "opacity: 0.5");
+                winner.push(index[i].name);
+            }
         }
-
+        temporary = [];
+    }
+    else {
+        for(var i=0; i<index.length; i++) {
+            if(index[i].name === temporary[0]) { 
+                var pos0 = index[i];
+            }
+            if(index[i].name === temporary[1]) { 
+                var pos1 = index[i]; 
+                break;
+            }
+        }
+        setTimeout(() => {
+            pos0.setAttribute("src", "img/fondo.png");
+            pos0.setAttribute("onClick", "flipImages(this)");
+            pos1.setAttribute("src", "img/fondo.png");
+            pos1.setAttribute("onClick", "flipImages(this)");
+        }, 500);
+        console.log(pos0);
+        console.log(pos1);
+        temporary = [];
+    }
+    if(winner.length === images.length/10) {
+        clearInterval(timer);
+        winner = [];
+        setTimeout(() => {
+            var modalwinner = document.getElementById("modal-winner");
+            var closewinner = document.getElementById("close-winner");
+            modalwinner.classList.add("show");
+            closewinner.addEventListener("click", () => {
+                modalwinner.classList.remove("show");
+                location.reload();            
+            })
+            
+        }, 500);
     }
 }
 
+// Restart the page ------------------------------------------------------->
+var reset = document.getElementById("reset");
+reset.addEventListener("click", () => location.reload());
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// Muestra las imagenes
-// createBoard = () => {
-//     duplicateArrayCards();
-//     shufflingCards(arrayCards);
-//     for(var i=0; i<arrayCards.length; i++) {
-//         var card = document.createElement('figure');
-//         card.setAttribute('name', arrayCards[i]);
-//         card.innerHTML = '<img class="figure-img" src="/img/animals/'+arrayCards[i]+'.svg"/>';
-//         card.setAttribute('onClick', 'flipCard(this)');
-//         container.appendChild(card);
-//     }
-// }
-
-// createBoard = () => {
-//     duplicateArrayCards();
-//     shufflingCards(arrayCards);
-//     for(var i=0; i<arrayCards.length; i++) {
-//         var card = document.createElement('img');
-//         card.classList.add('img-board');
-//         card.setAttribute('img-board', i);
-//         card.setAttribute("src", 'img/fondo-card.png');
-//         card.addEventListener('click', flipCard);
-//         container.appendChild(card);
-//     }
-// }
+// Window about ----------------------------------------------------------->
+var modalabout = document.getElementById("modal-about");
+var about = document.getElementById("about");
+var closeabout = document.getElementById("close-about");
+about.addEventListener("click", () => modalabout.classList.add("show"));
+closeabout.addEventListener("click", () => modalabout.classList.remove("show"));
