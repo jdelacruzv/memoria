@@ -1,10 +1,3 @@
-// Load the timer and board images
-window.onload = () => {
-    document.getElementById('timer').innerHTML = '00:00:00';
-    calculateTimer();
-    createBoard();
-}
-
 // Accumulated time (timer) ---------------------------------------------->
 // setInterval(): ejecuta una función infinitamente cada x milisegundos.
 // setTimeout(): ejecuta una función una sola vez después de x milisegundos. 
@@ -33,101 +26,98 @@ calculateTimer = () => {
     }, 1000);
 }
 
+var images = [], temporary = [], temporaryId = [], winner = [];
 
-var container = document.getElementById("board");
-var images = [1,2,3,4,5,6,7,8,9,10];
-var temporary = [], winner = [];
-const count = 10;
-
-// Duplicate array of images
-duplicateArrayImages = () => { 
-    for(var i=1; i<=count; i++) {
+createArrayImages = () => {
+    for(var i=1; i<=10; i++) {
+        images.push(i);
         images.push(i);
     }
 }
 
-// Disorder the positions of the images
 messArrayImages = array => array.sort(() => Math.random() - 0.5);
 
-// Create the game board
 createBoard = () => {
-    duplicateArrayImages();
+    createArrayImages();
     messArrayImages(images);
+    var container = document.getElementById("board");
     for(var i=0; i<images.length; i++) {
         var image = document.createElement("img");
-        image.classList.add("figure-img");
+        image.setAttribute("id", i);
         image.setAttribute("name", images[i]);
         image.setAttribute("src", "img/fondo.png");
-        image.setAttribute("onclick", "flipImages(this)");
-        container.appendChild(image);
+        image.classList.add("figure-img");
+        image.addEventListener("click", flipImages);
+        container.appendChild(image);        
     }
 }
 
-// Flip the images
-flipImages = (e) => {
-    var imageId = e.getAttribute("name");
-    console.log(imageId);
-    e.setAttribute("src", `img/animals/${imageId}.svg`);
-    e.setAttribute("style", "background-color: #999b84");
-    e.removeAttribute("onClick", "flipImages(this)");
-    temporary.push(imageId);
+function flipImages() {
+// flipImages = () => {  //this.getAttribute is not a function at HTMLImageElement.flipImages
+    var imageName = this.getAttribute("name"); 
+    var imageId = this.getAttribute("id"); 
+    console.log(imageName);
+    this.setAttribute("src", `img/animals/${imageName}.svg`);
+    this.removeEventListener("click", flipImages);
+    temporary.push(imageName);
+    temporaryId.push(imageId);
     if (temporary.length === 2) {
-        verifySameImages();
+        if(temporary[0] === temporary[1]) {
+            setTimeout(sameImages, 500);
+        }
+        else {
+            setTimeout(differentImages, 500);
+        }
     }
 }
 
-// Check if the images are the same
-verifySameImages = () => {
+sameImages = () => {
     var index = document.querySelectorAll("img[name]");
-    if(temporary[0] === temporary[1]) {
-        for(var i=0; i<index.length; i++) {
-            if(index[i].name === temporary[0]) {
-                index[i].setAttribute("style", "opacity: 0.5");
-                winner.push(index[i].name);
-            }
+    for(var i=0; i<index.length; i++) {
+        if(index[i].name === temporary[0]) {
+            index[i].setAttribute("style", "opacity: 0.5");
+            winner.push(index[i].name);
         }
-        temporary = [];
     }
-    else {
-        for(var i=0; i<index.length; i++) {
-            if(index[i].name === temporary[0]) { 
-                var pos0 = index[i];
-            }
-            if(index[i].name === temporary[1]) { 
-                var pos1 = index[i]; 
-                break;
-            }
-        }
-        setTimeout(() => {
-            pos0.setAttribute("src", "img/fondo.png");
-            pos0.setAttribute("onClick", "flipImages(this)");
-            pos1.setAttribute("src", "img/fondo.png");
-            pos1.setAttribute("onClick", "flipImages(this)");
-        }, 500);
-        console.log(pos0);
-        console.log(pos1);
-        temporary = [];
-    }
-    if(winner.length === images.length/10) {
+    temporary = [];
+    temporaryId = [];
+    winGame();
+}
+
+differentImages = () => {
+    var index = document.querySelectorAll("img[name]");
+    index[temporaryId[0]].setAttribute("src", "img/fondo.png");
+    index[temporaryId[1]].setAttribute("src", "img/fondo.png");
+    index[temporaryId[0]].addEventListener("click", flipImages);
+    index[temporaryId[1]].addEventListener("click", flipImages);
+    temporary = [];
+    temporaryId = [];
+}
+
+winGame = () => {
+    if(winner.length === images.length) {
         clearInterval(timer);
         winner = [];
-        setTimeout(() => {
-            var modalwinner = document.getElementById("modal-winner");
-            var closewinner = document.getElementById("close-winner");
-            modalwinner.classList.add("show");
-            closewinner.addEventListener("click", () => {
-                modalwinner.classList.remove("show");
-                location.reload();            
-            })
-            
-        }, 500);
+        var modalwinner = document.getElementById("modal-winner");
+        var closewinner = document.getElementById("close-winner");
+        modalwinner.classList.add("show");
+        closewinner.addEventListener("click", () => {
+            modalwinner.classList.remove("show");
+            location.reload();      
+        })
     }
 }
 
-// Restart the page ------------------------------------------------------->
+// Load timer and board images
+window.onload = () => {
+    document.getElementById('timer').innerHTML = '00:00:00';
+    calculateTimer();
+    createBoard();
+}
+
+// Reset page ------------------------------------------------------------->
 var reset = document.getElementById("reset");
 reset.addEventListener("click", () => location.reload());
-
 
 // Window about ----------------------------------------------------------->
 var modalabout = document.getElementById("modal-about");
