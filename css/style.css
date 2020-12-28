@@ -7,38 +7,41 @@
 }
 
 body {
-    background-color: #393e46;
+    /* background-color: #393e46; */
+    background-color: #3f444d;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
 }
 
-button {
-    background-color: #47a386;
-    border: 1px solid #47a386;
-    border-radius: 5px;
-    color: #ffffff;
-    font-size: 0.8rem;
-    width: 6.8rem;
-    text-transform: uppercase;
-    padding: 0.5rem 0.8rem;
-    cursor: pointer;
-    /* Elimina resplandor cuando 
-       recibe el focus */
-    outline: none;
+/* ---------- MENU HAMBURGER ---------- */
+.container_menu-hamburger {  
+    margin: 0;
+    position: fixed;
+    z-index: 500;
+    top: 8px;
+    right: 8px;
+    display: none;
 }
 
+.hamburger_menu {            
+    width: 50px;
+    height: 50px;
+}
+
+/* ---------- HEADER ---------- */ 
 header {
     height: 60px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     background-color: #222831;
     color: #ffffff;
 }
 
-header h1 {
+h1 {
     margin-left: 10px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 .time {
@@ -46,12 +49,10 @@ header h1 {
     justify-content: center;
     align-items: center;
     margin: 0;
-    padding: 10px;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .time span {
-    margin-right: 5px;
     font-weight: bold;
     letter-spacing: 1px;
     color: #ffffff;
@@ -70,20 +71,38 @@ li {
     border-radius: 5px;
 }
 
-figure {
-    margin: 3% 25%;
+button {
+    background-color: #47a386;
+    border: 1px solid #47a386;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.8rem;
+    width: 6.8rem;
+    text-transform: uppercase;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    /* Elimina resplandor cuando recibe el focus */
+    outline: none;
+}
+
+/* ----------- MAIN ---------- */
+.board {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    margin: 3.5% 10%;
 }
 
 .figure-img {
-    width: 120px;
-    height: 120px;
-    margin: 5px;
-    border-radius: 5px;
+    width: 7.5rem;
+    height: 7.5rem;
+    margin: 0.3rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
 }
 
+/* ----------- WINDOW MODAL ---------- */
 .container-modal {
     background-color: rgba(0, 0, 0, 0.3);
     display: flex;
@@ -107,9 +126,8 @@ figure {
 }
 
 .window-modal {
-    /* background-color: #222831; */
     background-color: #ffffff;
-    width: 480px;
+    width: 30rem;
     max-width: 100%;
     padding: 20px 10px;
     border-radius: 5px;
@@ -121,8 +139,8 @@ figure {
 }
 
 .window-modal figure img {
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem;
     border-radius: 3.2rem;
     box-shadow: 2px 2px 5px #999999;
 }
@@ -130,6 +148,222 @@ figure {
 .window-modal p {
     font-size: 25px;
     font-weight: bold;
-    margin: 30px 0;
+    margin: 1.875rem 0;
     color:  #000000;
+}
+
+/* ---------- DIV WRAPPER ---------- */
+.wrapper {
+    /* border: 1px solid red; */
+    max-width: 1024px;  
+    /* flex: grow (se ajusta siempre a 1024px */
+    flex: 1; 
+    margin: 0px auto;
+    display: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+    height: inherit;
+    flex-wrap: inherit;
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .time {
+        font-size: 1.3rem;
+    }
+
+    button {
+        font-size: 0.7rem;
+        width: 6rem;
+    }
+
+    .window-modal {
+        width: 25rem;
+    }
+
+    .window-modal figure img {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+    
+    .window-modal p {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+    }
+}
+
+@media screen and (max-width: 649px) {
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .time {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 0.6rem;
+        width: 5.5rem;
+    }
+
+    .figure-img {
+        width: 6.5rem;
+        height: 6.5rem;
+    }
+
+    .window-modal {
+        width: 23rem;
+        padding: 1rem 0.5rem;
+    }
+
+    .window-modal figure img {
+        width: 4rem;
+        height: 4rem;
+    }
+    
+    .window-modal p {
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+    }
+}
+
+@media screen and (max-width: 569px) {
+    h1 {
+        font-size: 1.1rem;
+    }
+
+    .time {
+        font-size: 0.8rem;
+    }
+
+    .board {
+        margin: 4.5% 9%;
+    }
+
+
+    .figure-img {
+        width: 5.5rem;
+        height: 5.5rem;
+    }
+
+    .window-modal {
+        width: 21rem;
+    }
+
+    .window-modal figure img {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+    
+    .window-modal p {
+        font-size: 1rem;
+        margin: 1.5rem 0;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    h1 {
+        display: none;
+    }
+
+    .time {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+
+    .board {
+        margin: 13.5% 9%;
+    }
+
+    .figure-img {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    .window-modal {
+        width: 19rem;
+    }
+
+    .window-modal figure img {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .window-modal p {
+        font-size: 0.9rem;
+        margin: 1.5rem 0;
+    }
+} 
+
+@media screen and (max-width: 397px) {
+    .time {
+        font-size: 1.3rem;
+    }
+
+    button {
+        font-size: 0.5rem;
+        width: 5rem;
+    }    
+
+    .board {
+        margin: 7.5% 9%;
+    }
+
+    .figure-img {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .window-modal {
+        width: 15rem;
+    }
+
+    .window-modal figure img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .window-modal p {
+        font-size: 0.7rem;
+        margin: 1.5rem 0;
+    }
+} 
+
+@media screen and (max-width: 320px) {
+    header {
+        display: block;
+        padding: 0.5rem;
+        height: 90px;
+    }
+
+    .time {
+        font-size: 1.1rem;
+        margin-left: 0;
+    }
+
+    nav {
+        margin: 0;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0.3rem;
+    }
+
+    .board {
+        margin: 11.5% 9%;
+    }
+
+    .figure-img {
+        width: 3rem;
+        height: 3rem;
+    }
 }

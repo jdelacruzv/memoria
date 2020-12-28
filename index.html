@@ -5,26 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Jose Luis De La Cruz">
     <title>Juego de Memoria</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <h1>Juego de Memoria</h1>
-        <div class="time">
-            <span>Tiempo acumulado: <span id="timer"></span></span>
+        <div class="wrapper">
+            <h1>Juego de Memoria</h1>
+            <div class="time">
+                <span id="timer"></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><button id="reset">Reiniciar</button>
+                    <li><button id="about">Acerca de</button>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><button id="reset">Reiniciar</button>
-                <li><button id="about">Acerca de</button>
-            </ul>
-        </nav>
     </header>
-    <figure id="board"></figure>
+    <div class="wrapper">
+        <figure id="board" class="board"></figure>
+    </div>
     <div id="modal-about" class="container-modal">
         <div class="window-modal">
             <figure>
-                <img src="/img/jl.jpg" alt="Logo verde Jose Luis">
+                <img src="img/jl.jpg" alt="Logo verde Jose Luis">
             </figure>
             <p>Desarrollado por Jose De La Cruz</p>
             <button id="close-about">Cerrar</button>
@@ -33,12 +37,12 @@
     <div id="modal-winner" class="container-modal">
         <div class="window-modal">
             <figure>
-                <img src="/img/win.svg" alt="Logo naranja ganador">
+                <img src="img/win.svg" alt="Copa amarillo de ganador">
             </figure>
-            <p>GANASTE...!!!</p>
+            <p>!!!.....GANASTE.....!!!</p>
             <button id="close-winner">Cerrar</button>
         </div>
     </div>
-    <script src="/js/memory.js"></script>
+    <script src="js/memory.js"></script>
 </body> 
 </html>

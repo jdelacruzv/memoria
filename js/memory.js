@@ -1,4 +1,4 @@
-// Accumulated time (timer) ---------------------------------------------->
+// Tiempo acumulado (temporizador)
 // setInterval(): ejecuta una función infinitamente cada x milisegundos.
 // setTimeout(): ejecuta una función una sola vez después de x milisegundos. 
 
@@ -28,18 +28,21 @@ calculateTimer = () => {
 
 var images = [], temporary = [], temporaryId = [], winner = [];
 
-createArrayImages = () => {
-    for(var i=1; i<=10; i++) {
+// Crea el array de imágenes: [1,1,2,2,...,12,12]
+createImages = () => {
+    for(var i=1; i<=12; i++) {
         images.push(i);
         images.push(i);
     }
 }
 
-messArrayImages = array => array.sort(() => Math.random() - 0.5);
+// Desordena aleatoriamente el array de imágenes 
+shuffleImages = array => array.sort(() => Math.random() - 0.5);
 
+// Crea el tablero con las imágenes
 createBoard = () => {
-    createArrayImages();
-    messArrayImages(images);
+    createImages();
+    shuffleImages(images);
     var container = document.getElementById("board");
     for(var i=0; i<images.length; i++) {
         var image = document.createElement("img");
@@ -52,11 +55,11 @@ createBoard = () => {
     }
 }
 
+// Voltea la imágen cuando se hace click
 function flipImages() {
 // flipImages = () => {  //this.getAttribute is not a function at HTMLImageElement.flipImages
     var imageName = this.getAttribute("name"); 
     var imageId = this.getAttribute("id"); 
-    console.log(imageName);
     this.setAttribute("src", `img/animals/${imageName}.svg`);
     this.removeEventListener("click", flipImages);
     temporary.push(imageName);
@@ -71,6 +74,7 @@ function flipImages() {
     }
 }
 
+// Verifica si las dos imágenes son iguales
 sameImages = () => {
     var index = document.querySelectorAll("img[name]");
     for(var i=0; i<index.length; i++) {
@@ -84,6 +88,7 @@ sameImages = () => {
     winGame();
 }
 
+// Verifica si las dos imágenes son diferentes
 differentImages = () => {
     var index = document.querySelectorAll("img[name]");
     index[temporaryId[0]].setAttribute("src", "img/fondo.png");
@@ -94,6 +99,7 @@ differentImages = () => {
     temporaryId = [];
 }
 
+// Ventana modal que avisa cuando ganastes el juego 
 winGame = () => {
     if(winner.length === images.length) {
         clearInterval(timer);
@@ -108,18 +114,18 @@ winGame = () => {
     }
 }
 
-// Load timer and board images
+// Carga el temporizador y las imágenes del tablero
 window.onload = () => {
     document.getElementById('timer').innerHTML = '00:00:00';
     calculateTimer();
     createBoard();
 }
 
-// Reset page ------------------------------------------------------------->
+// Reinicia la página
 var reset = document.getElementById("reset");
 reset.addEventListener("click", () => location.reload());
 
-// Window about ----------------------------------------------------------->
+// Ventana modal acerca de (about) 
 var modalabout = document.getElementById("modal-about");
 var about = document.getElementById("about");
 var closeabout = document.getElementById("close-about");
