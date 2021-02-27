@@ -49,7 +49,7 @@ createBoard = () => {
         image.setAttribute("id", i);
         image.setAttribute("name", images[i]);
         image.setAttribute("src", "img/fondo.png");
-        image.classList.add("figure-img");
+        image.classList.add("board__img");
         image.addEventListener("click", flipImages);
         container.appendChild(image);        
     }

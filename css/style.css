@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,85 +5,53 @@
 }
 
 body {
-    /* background-color: #393e46; */
     background-color: #3f444d;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
 }
 
-/* ---------- MENU HAMBURGER ---------- */
-.container_menu-hamburger {  
-    margin: 0;
-    position: fixed;
-    z-index: 500;
-    top: 8px;
-    right: 8px;
-    display: none;
-}
-
-.hamburger_menu {            
-    width: 50px;
-    height: 50px;
-}
-
-/* ---------- HEADER ---------- */ 
-header {
+/* ========== HEADER ========== */ 
+.header {
     height: 60px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
     background-color: #222831;
+}
+
+.header__title {
+    font-size: 1.5rem;
     color: #ffffff;
 }
 
-h1 {
-    margin-left: 10px;
-    font-size: 1.8rem;
-}
-
-.time {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
+.header__time {
     font-size: 1.5rem;
-}
-
-.time span {
     font-weight: bold;
     letter-spacing: 1px;
     color: #ffffff;
 }
 
-ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+.header__container {
+    display: block;
 }
 
-li {
-    margin-right: 10px;
-    padding: 3px;
-    border-radius: 5px;
-}
-
-button {
+.button {
     background-color: #47a386;
     border: 1px solid #47a386;
     border-radius: 5px;
     color: #ffffff;
     font-size: 0.8rem;
-    width: 6.8rem;
     text-transform: uppercase;
+    width: 6.8rem;
     padding: 0.5rem 0.8rem;
     cursor: pointer;
     /* Elimina resplandor cuando recibe el focus */
     outline: none;
 }
 
-/* ----------- MAIN ---------- */
+/* ========== MAIN ========== */
 .board {
     display: flex;
     flex-wrap: wrap;
@@ -94,7 +60,7 @@ button {
     margin: 3.5% 10%;
 }
 
-.figure-img {
+.board__img {
     width: 7.5rem;
     height: 7.5rem;
     margin: 0.3rem;
@@ -102,267 +68,181 @@ button {
     cursor: pointer;
 }
 
-/* ----------- WINDOW MODAL ---------- */
-.container-modal {
-    background-color: rgba(0, 0, 0, 0.3);
+/* ========== WINDOW MODAL ========== */
+.container {
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Controla si el elemento puede o 
-       no recibir eventos del cursor */
+    /* Controla si puede o no recibir eventos del cursor */
     pointer-events: none;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     opacity: 0;
 }
 
 .show {
     pointer-events: auto;
-    /* Muestra la ventana */
     opacity: 1;
 }
 
-.window-modal {
+.modal {
     background-color: #ffffff;
-    width: 30rem;
-    max-width: 100%;
-    padding: 20px 10px;
+    width: 25rem;
+    padding: 20px 40px;
     border-radius: 5px;
     text-align: center;
-}
-
-.window-modal figure {
     margin: 0;
 }
 
-.window-modal figure img {
+.modal__img {
     width: 6.25rem;
     height: 6.25rem;
     border-radius: 3.2rem;
     box-shadow: 2px 2px 5px #999999;
 }
 
-.window-modal p {
-    font-size: 25px;
+.modal__text {
+    font-size: 1rem;
     font-weight: bold;
     margin: 1.875rem 0;
-    color:  #000000;
+    color:  #3f444d;
 }
 
-/* ---------- DIV WRAPPER ---------- */
+/* ========== DIV WRAPPER ========== */
 .wrapper {
-    /* border: 1px solid red; */
     max-width: 1024px;  
-    /* flex: grow (se ajusta siempre a 1024px */
     flex: 1; 
+    height: inherit;
     margin: 0px auto;
     display: inherit;
-    align-items: inherit;
-    justify-content: inherit;
-    height: inherit;
     flex-wrap: inherit;
+    justify-content: inherit;
+    align-items: inherit;    
 }
 
-/* ---------- MEDIA QUERIES ---------- */
+/* ========== MEDIA QUERIES ========== */
 @media screen and (max-width: 768px) {
-    h1 {
-        font-size: 1.6rem;
-    }
-
-    .time {
+    .header__title {
         font-size: 1.3rem;
     }
 
-    button {
+    .header__time {
+        font-size: 1.3rem;
+    }
+
+    .button {
         font-size: 0.7rem;
         width: 6rem;
     }
 
-    .window-modal {
-        width: 25rem;
-    }
-
-    .window-modal figure img {
-        width: 4.5rem;
-        height: 4.5rem;
-    }
-    
-    .window-modal p {
-        font-size: 1.2rem;
-        margin: 1.5rem 0;
+    .board {
+        margin: 3.5% 8%;
     }
 }
 
-@media screen and (max-width: 649px) {
-    h1 {
-        font-size: 1.3rem;
-    }
-
-    .time {
+@media screen and (max-width: 645px) {
+    .header__title {
         font-size: 1rem;
     }
 
-    button {
+    .header__time {
+        font-size: 1rem;
+    }
+
+    .button {
         font-size: 0.6rem;
         width: 5.5rem;
     }
 
-    .figure-img {
+    .board {
+        margin: 3.5% 6%;
+    }
+
+    .board__img {
         width: 6.5rem;
         height: 6.5rem;
     }
-
-    .window-modal {
-        width: 23rem;
-        padding: 1rem 0.5rem;
-    }
-
-    .window-modal figure img {
-        width: 4rem;
-        height: 4rem;
-    }
-    
-    .window-modal p {
-        font-size: 1.1rem;
-        margin: 1.5rem 0;
-    }
 }
 
-@media screen and (max-width: 569px) {
-    h1 {
-        font-size: 1.1rem;
-    }
-
-    .time {
+@media screen and (max-width: 565px) {
+    .header__time {
         font-size: 0.8rem;
     }
 
     .board {
-        margin: 4.5% 9%;
-    }
-
-
-    .figure-img {
-        width: 5.5rem;
-        height: 5.5rem;
-    }
-
-    .window-modal {
-        width: 21rem;
-    }
-
-    .window-modal figure img {
-        width: 3.5rem;
-        height: 3.5rem;
-    }
-    
-    .window-modal p {
-        font-size: 1rem;
-        margin: 1.5rem 0;
+        margin: 3.5% 4%;
     }
 }
 
-@media screen and (max-width: 490px) {
-    h1 {
+@media screen and (max-width: 493px) {
+    .header__title {
         display: none;
     }
 
-    .time {
+    .header__time {
         font-size: 1.5rem;
         margin-left: 1rem;
     }
 
     .board {
-        margin: 13.5% 9%;
+        margin: 3.5% 2%;
     }
 
-    .figure-img {
-        width: 4.5rem;
-        height: 4.5rem;
+    .board__img {
+        width: 5.5rem;
+        height: 5.5rem;
     }
 
-    .window-modal {
-        width: 19rem;
+    .modal {
+        width: 80%;
     }
+}  
 
-    .window-modal figure img {
-        width: 3rem;
-        height: 3rem;
-    }
-    
-    .window-modal p {
-        font-size: 0.9rem;
-        margin: 1.5rem 0;
-    }
-} 
-
-@media screen and (max-width: 397px) {
-    .time {
+@media screen and (max-width: 406px) {
+    .header__time {
         font-size: 1.3rem;
     }
 
-    button {
+    .button {
         font-size: 0.5rem;
         width: 5rem;
     }    
 
     .board {
-        margin: 7.5% 9%;
+        margin: 3.5% 2%;
     }
 
-    .figure-img {
-        width: 3.5rem;
-        height: 3.5rem;
-    }
-
-    .window-modal {
-        width: 15rem;
-    }
-
-    .window-modal figure img {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-    
-    .window-modal p {
-        font-size: 0.7rem;
-        margin: 1.5rem 0;
+    .board__img {
+        width: 5rem;
+        height: 5rem;
     }
 } 
 
 @media screen and (max-width: 320px) {
-    header {
-        display: block;
+    .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
         padding: 0.5rem;
         height: 90px;
     }
 
-    .time {
+    .header_time {
         font-size: 1.1rem;
         margin-left: 0;
-    }
-
-    nav {
-        margin: 0;
-    }
-
-    ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        padding: 0.3rem;
     }
 
     .board {
         margin: 11.5% 9%;
     }
 
-    .figure-img {
+    .board__img {
         width: 3rem;
         height: 3rem;
     }

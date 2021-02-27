@@ -6,44 +6,44 @@
     <meta name="author" content="Jose Luis De La Cruz">
     <title>Juego de Memoria</title>
     <link rel="shortcut icon" href="img/icon.jpg" type="image/x-icon"/>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">    
 </head>
 <body>
-    <header>
+    <div class="header">
         <div class="wrapper">
-            <h1>Juego de Memoria</h1>
-            <div class="time">
-                <span id="timer"></span>
+            <h1 class="header__title">Juego de Memoria</h1>
+            <span class="header__time" id="timer"></span>
+            <div class="header__container">
+                <button class="button" id="about">Acerca de</button>
+                <button class="button" id="reset">Reiniciar</button>
             </div>
-            <nav>
-                <ul>
-                    <li><button id="reset">Reiniciar</button>
-                    <li><button id="about">Acerca de</button>
-                </ul>
-            </nav>
         </div>
-    </header>
+    </div>
+    
     <div class="wrapper">
-        <figure id="board" class="board"></figure>
+        <figure class="board" id="board"></figure>
     </div>
-    <div id="modal-about" class="container-modal">
-        <div class="window-modal">
+
+    <div class="container" id="modal-about">
+        <div class="modal">
             <figure>
-                <img src="img/jl.jpg" alt="Logo verde Jose Luis">
+                <img class="modal__img" src="img/jl.jpg" alt="Logo verde Jose Luis">
             </figure>
-            <p>Desarrollado por Jose De La Cruz</p>
-            <button id="close-about">Cerrar</button>
+            <p class="modal__text">Desarrollado por Jose De La Cruz</p>
+            <button class="button" id="close-about">Cerrar</button>
         </div>
     </div>
-    <div id="modal-winner" class="container-modal">
-        <div class="window-modal">
+
+    <div class="container" id="modal-winner">
+        <div class="modal">
             <figure>
-                <img src="img/win.svg" alt="Copa amarillo de ganador">
+                <img class="modal__img" src="img/win.svg" alt="Copa amarillo de ganador">
             </figure>
-            <p>!!!.....GANASTE.....!!!</p>
-            <button id="close-winner">Cerrar</button>
+            <p class="modal__text">¡¡¡.....GANASTE.....!!!</p>
+            <button class="button" id="close-winner">Cerrar</button>
         </div>
     </div>
+
     <script src="js/memory.js"></script>
 </body> 
 </html>
