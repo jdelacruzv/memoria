@@ -14,23 +14,25 @@
             <h1 class="header__title">Juego de Memoria</h1>
             <span class="header__time" id="timer"></span>
             <div class="header__button">
-                <button class="button button--icon" id="reset">
-                    <img class="button__img" src="img/reset.png" alt="Icono de reinicio"/><span class="button__text">Reiniciar</span> 
+                <button class="button" id="reset">
+                    <img class="button__img" src="img/reset.png" alt="Icono boton reinicio"/><span class="button__text">Reiniciar</span> 
                 </button>
-                <button class="button button--icon" id="about">
-                    <img class="button__img" src="img/about.png" alt="Icono de acerca de"/><span class="button__text">Acerca de</span> 
+                <button class="button" id="about">
+                    <img class="button__img" src="img/about.png" alt="Icono boton acerca de"/><span class="button__text">Acerca de</span> 
                 </button>
             </div>
         </div>
     </header>
     
-    <div class="wrapper">
-        <figure class="board" id="board"></figure>
-    </div>
+    <section class="main">
+        <div class="wrapper">
+            <figure class="board" id="board"></figure>
+        </div>
+    </section>
     
     <section class="container" id="modal-about">
         <div class="modal">
-            <figure>
+            <figure class="modal__box">
                 <img class="modal__img" src="img/jl.jpg" alt="Logo verde Jose Luis">
             </figure>
             <p class="modal__text">Desarrollado por Jose De La Cruz</p>
@@ -40,7 +42,7 @@
 
     <section class="container" id="modal-winner">
         <div class="modal">
-            <figure>
+            <figure class="modal__box">
                 <img class="modal__img" src="img/win.svg" alt="Copa amarillo de ganador">
             </figure>
             <p class="modal__text">¡¡¡.....GANASTE.....!!!</p>
