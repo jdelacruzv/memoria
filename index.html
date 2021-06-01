@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Jose Luis De La Cruz">
-    <title>Juego de Memoria</title>
-    <link rel="shortcut icon" href="img/icon.jpg" type="image/x-icon"/>
-    <link rel="stylesheet" href="css/style.css">    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Jose Luis De La Cruz">
+  <title>Juego de Memoria</title>
+  <link rel="shortcut icon" href="img/icon.jpg" type="image/x-icon"/>
+  <link rel="stylesheet" href="css/style.css">    
 </head>
 <body>
-    <header class="header">
-        <div class="wrapper">
-            <h1 class="header__title">Juego de Memoria</h1>
-            <span class="header__time" id="timer"></span>
-            <div class="header__button">
-                <button class="button" id="reset">
-                    <img class="button__img" src="img/reset.png" alt="Icono boton reinicio"/><span class="button__text">Reiniciar</span> 
-                </button>
-                <button class="button" id="about">
-                    <img class="button__img" src="img/about.png" alt="Icono boton acerca de"/><span class="button__text">Acerca de</span> 
-                </button>
-            </div>
-        </div>
-    </header>
+  <header class="header">
+    <div class="wrapper">
+      <h1 class="header__title">Juego de Memoria</h1>
+      <span class="header__time" id="timer"></span>
+      <div class="header__button">
+        <button class="button" id="reset">
+          <img class="button__img" src="img/reset.png" alt="Icono boton reinicio"/><span class="button__text">Reiniciar</span> 
+        </button>
+        <button class="button" id="about">
+          <img class="button__img" src="img/about.png" alt="Icono boton acerca de"/><span class="button__text">Acerca de</span> 
+        </button>
+      </div>
+    </div>
+  </header>
     
-    <section class="main">
-        <div class="wrapper">
-            <figure class="board" id="board"></figure>
-        </div>
-    </section>
+  <section class="main">
+    <div class="wrapper">
+      <figure class="board" id="board"></figure>
+    </div>
+  </section>
     
-    <section class="container" id="modal-about">
-        <div class="modal">
-            <figure class="modal__box">
-                <img class="modal__img" src="img/jl.jpg" alt="Logo verde Jose Luis">
-            </figure>
-            <p class="modal__text">Desarrollado por Jose De La Cruz</p>
-            <button class="button button--close" id="close-about">Cerrar</button>
-        </div>
-    </section>
+  <section class="container" id="modal-about">
+    <div class="modal">
+      <figure class="modal__box">
+        <img class="modal__img" src="img/jl.jpg" alt="Logo verde Jose Luis">
+      </figure>
+      <p class="modal__text">Desarrollado por Jose De La Cruz</p>
+      <button class="button button--close" id="close-about">Cerrar</button>
+    </div>
+  </section>
 
-    <section class="container" id="modal-winner">
-        <div class="modal">
-            <figure class="modal__box">
-                <img class="modal__img" src="img/win.svg" alt="Copa amarillo de ganador">
-            </figure>
-            <p class="modal__text">¡¡¡.....GANASTE.....!!!</p>
-            <button class="button button--close" id="close-winner">Cerrar</button>
-        </div>
-    </section>
+  <section class="container" id="modal-winner">
+    <div class="modal">
+      <figure class="modal__box">
+        <img class="modal__img" src="img/win.svg" alt="Copa amarillo de ganador">
+      </figure>
+      <p class="modal__text">¡¡¡.....GANASTE.....!!!</p>
+      <button class="button button--close" id="close-winner">Cerrar</button>
+    </div>
+  </section>
 
-    <script src="js/memory.js"></script>
+  <script src="js/memory.js"></script>
 </body> 
 </html>
